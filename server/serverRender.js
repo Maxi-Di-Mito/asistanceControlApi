@@ -1,12 +1,12 @@
 /**
  * Created by maximiliano.dimito on 2/9/2017.
  */
-import {renderToString} from 'react-dom/server';
-import React from 'react';
-import { createStore} from "redux";
-import {Provider} from 'react-redux';
+//import {renderToString} from 'react-dom/server';
+//import React from 'react';
+//import { createStore} from "redux";
+//import {Provider} from 'react-redux';
 //import rootReducer from '../www/redux/reducers';
-import serialize from 'serialize-javascript';
+//import serialize from 'serialize-javascript';
 //import App from '../www/app/App';
 
 

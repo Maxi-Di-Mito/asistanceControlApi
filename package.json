@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "babel ./server -d ./DIST ",
-    "start": " npm run compile && node ./start.js"
+    "postinstall": "npm run compile",
+    "start": "node ./start.js",
+    "bs": "npm run compile && npm run start"
   },
   "author": "",
   "license": "ISC",
