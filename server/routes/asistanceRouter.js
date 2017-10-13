@@ -3,10 +3,8 @@
  */
 const Asistance = require('../model/Asistance');
 const Boom = require('boom');
-const loggerCreator = require('../util/logger');
-const Logger = loggerCreator('ASISTANCE-ROUTES');
 
-module.exports =  router => {
+module.exports =  (router,Logger) => {
 
     router.get('/asistances/', async (req, res, next) => {
         try{

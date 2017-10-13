@@ -5,6 +5,7 @@ const express = require('express');
 const fs = require('fs');
 const routerApi = express.Router();
 const errorHandler = require('./util/errorHandler');
+const loggerCreator = require('../util/logger');
 //import route from './api/personRouter';
 
 
@@ -15,7 +16,7 @@ routerApi.get('/', (req, res) => {
 fs.readdirSync(__dirname+'/api')
     .forEach( file => {
         const filePath = `./routes/${file}`;
-        require(filePath)(routerApi);
+        require(filePath)(routerApi,loggerCreator(file));
 });
 
 routerApi.use(errorHandler);
