@@ -2,12 +2,12 @@
  * Created by maximiliano.dimito on 4/3/2017.
  */
 
-import Boom from 'boom';
-import Person from '../model/Person';
-import loggerCreator from '../util/logger';
+const Boom = require('boom');
+const Person = require('../model/Person');
+const loggerCreator = require('../util/logger');
 const Logger = loggerCreator('PERSON-ROUTES');
 
-export default router => {
+module.exports = router => {
     router.get("/persons/", async (req, res, next) => {
         try{
             const data = await Person.find({});

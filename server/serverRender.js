@@ -38,4 +38,4 @@ const serverRender = ( req, res, next) => {
     //res.status(200).header("Content-Type", "text/html; charset=utf-8").end(renderFullPage(renderToString(<Provider store={store}><App/></Provider>),store.getState()));
 };
 
-export default serverRender;
+module.exports = serverRender;

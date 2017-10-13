@@ -4,7 +4,7 @@
 /**
  * Created by maximiliano.dimito on 3/23/2017.
  */
-import winston from 'winston';
+const winston = require('winston');
 
 const logger = new (winston.Logger)({
     transports: [
@@ -24,7 +24,7 @@ const logger = new (winston.Logger)({
 
 
 
-export default (moduleName) => {
+module.exports = (moduleName) => {
     return {
         info: (text) => logger.info(`${new Date()} - ${moduleName} - ${text}`),
         error: (text) => logger.error(`${new Date()} - ${moduleName} - ${text}`)

@@ -1,10 +1,10 @@
 /**
  * Created by maximiliano.dimito on 2/2/2017.
  */
-import express from 'express';
-import fs from 'fs';
+const express = require('express');
+const fs = require('fs');
 const routerApi = express.Router();
-import errorHandler from './util/errorHandler';
+const errorHandler = require('./util/errorHandler');
 //import route from './api/personRouter';
 
 
@@ -15,9 +15,9 @@ routerApi.get('/', (req, res) => {
 fs.readdirSync(__dirname+'/api')
     .forEach( file => {
         const filePath = `./api/${file}`;
-        require(filePath).default(routerApi);
+        require(filePath)(routerApi);
 });
 
 routerApi.use(errorHandler);
 
-export default routerApi;
+module.exports = routerApi;

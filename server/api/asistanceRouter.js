@@ -1,12 +1,12 @@
 /**
  * Created by maximiliano.dimito on 4/4/2017.
  */
-import Asistance from '../model/Asistance';
-import Boom from 'boom';
-import loggerCreator from '../util/logger';
+const Asistance = require('../model/Asistance');
+const Boom = require('boom');
+const loggerCreator = require('../util/logger');
 const Logger = loggerCreator('ASISTANCE-ROUTES');
 
-export default router => {
+module.exports =  router => {
 
     router.get('/asistances/', async (req, res, next) => {
         try{

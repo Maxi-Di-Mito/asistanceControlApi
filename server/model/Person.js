@@ -1,7 +1,7 @@
 /**
  * Created by maximiliano.dimito on 8/25/2016.
  */
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const Person = new Schema({
@@ -11,4 +11,4 @@ const Person = new Schema({
     collection:"Person"
 });
 
-export default mongoose.model('Person', Person);
+module.exports = mongoose.model('Person', Person);

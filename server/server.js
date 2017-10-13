@@ -1,11 +1,11 @@
 /**
  * Created by maximiliano.dimito on 1/10/2017.
  */
-import express from "express";
-import routerApi from './RouterApi';
-import serverRender from './serverRender';
-import path from 'path';
-import bodyParser from 'body-parser';
+const express = require("express");
+const routerApi = require('./RouterApi');
+const serverRender =require('./serverRender');
+const path = require('path');
+const bodyParser = require('body-parser');
 const app = express();
 
 app.use( (req, res, next) => {
