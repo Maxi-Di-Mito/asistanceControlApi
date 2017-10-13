@@ -14,7 +14,7 @@ routerApi.get('/', (req, res) => {
 
 fs.readdirSync(__dirname+'/api')
     .forEach( file => {
-        const filePath = `./api/${file}`;
+        const filePath = `./routes/${file}`;
         require(filePath)(routerApi);
 });
 
