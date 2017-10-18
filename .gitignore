@@ -4,3 +4,4 @@
 /.idea/
 /logs/
 www/static/js/bundle.js
+package-lock.json
