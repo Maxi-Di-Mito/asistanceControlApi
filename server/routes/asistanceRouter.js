@@ -10,10 +10,8 @@ module.exports =  (router,Logger) => {
         try{
             const data = await Asistance.find({}).populate('person');
             if(data){
-                res.json({
-                    response:true,
-                    asistances:data
-                });
+                res.status(200);
+                res.json(data);
             }else{
                 res.json({
                     response:false

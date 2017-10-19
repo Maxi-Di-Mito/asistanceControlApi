@@ -10,7 +10,9 @@ const app = express();
 
 app.use( (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,");
+    res.header("Access-Control-Expose-Headers", "X-Total-Count");
+    
     next();
 });
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,6 +27,6 @@ app.use('/api',routerApi);
 const port = process.env.PORT || 9001;
 
 app.listen(port, () => {
-    console.log("Andando");
+    console.log("Andando en "+port);
 });
 

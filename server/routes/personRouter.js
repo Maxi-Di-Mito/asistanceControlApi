@@ -9,13 +9,12 @@ module.exports = (router,Logger) => {
     router.get("/persons/", async (req, res, next) => {
         try{
             const data = await Person.find({});
-            res.json({
-                response: true,
-                persons: data
-            });
+            res.status(200);                        
+            res.header('X-Total-Count', data.length);
+            res.json(data);
         }catch (err) {
             Logger.error(err);
-           next(Boom.internal('Finding persons',err));
+            next(Boom.internal('Finding persons',err));
         }
     });
 
