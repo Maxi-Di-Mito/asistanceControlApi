@@ -6,11 +6,18 @@ const Boom = require('boom');
 
 module.exports =  (router,Logger) => {
 
-    router.get('/asistances/', async (req, res, next) => {
+    router.get('/asistances', async (req, res, next) => {
         try{
-            const data = await Asistance.find({}).populate('person');
+            let data = await Asistance.find({}).lean();
             if(data){
                 res.status(200);
+                data = data.map( p => {
+                    return {
+                        ...p,
+                        id: p._id
+                    }
+                });
+                res.header('X-Total-Count', data.length);
                 res.json(data);
             }else{
                 res.json({
@@ -65,6 +72,7 @@ module.exports =  (router,Logger) => {
 
     router.post("/asistances/", async (req,res, next) => {
         let response = false;
+        console.info('Body: ',JSON.stringify(req.body));
         const a = new Asistance();
         a.date = req.body.date;
         a.person = req.body.person._id;

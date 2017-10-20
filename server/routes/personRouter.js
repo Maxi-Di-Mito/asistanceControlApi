@@ -8,7 +8,13 @@ const Person = require('../model/Person');
 module.exports = (router,Logger) => {
     router.get("/persons/", async (req, res, next) => {
         try{
-            const data = await Person.find({});
+            let data = await Person.find({}).lean();;
+            data = data.map( p => {
+                return {
+                    ...p,
+                    id: p._id
+                }
+            });
             res.status(200);                        
             res.header('X-Total-Count', data.length);
             res.json(data);
@@ -19,14 +25,15 @@ module.exports = (router,Logger) => {
     });
 
     router.post("/persons/", async (req, res, next) => {
-
+        const {name, lastName} = req.body;
         let p = new Person();
-        p.name = req.body.name;
-        p.lastName = req.body.lastName;
+        p.name = name;
+        p.lastName = lastName;
         try{
             const savedPerson = await p.save();
 
             const data = await Person.find({});
+            
             res.json({
                 response: savedPerson && true,
                 persons: data
